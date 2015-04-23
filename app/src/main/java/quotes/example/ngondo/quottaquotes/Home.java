@@ -2,8 +2,13 @@ package quotes.example.ngondo.quottaquotes;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class Home extends ActionBarActivity {
@@ -12,6 +17,27 @@ public class Home extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        RecyclerView rv = (RecyclerView) findViewById(R.id.rv);
+        //rv.hasFixedSize(true);
+        LinearLayoutManager llm = new LinearLayoutManager(context);
+        rv.setLayoutManager(llm);
+    }
+
+    class Person{
+        String name,age;
+        int photoId;
+        Person(String name, String age, int photoId){
+            this.name=name;
+            this.age=age;
+            this.photoId=photoId;
+        }
+    }
+    private List<Person> persons;
+
+    private void initializeData(){
+        persons=new ArrayList<>();
+
     }
 
 
