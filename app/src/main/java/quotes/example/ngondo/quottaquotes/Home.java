@@ -37,6 +37,9 @@ public class Home extends ActionBarActivity {
 
     private void initializeData(){
         persons=new ArrayList<>();
+        persons.add(new Person("Emma Wilson", "23 years old", R.drawable.emma));
+        persons.add(new Person("Lavery Maiss", "25 years old", R.drawable.lavery));
+        persons.add(new Person("Lillie Watts", "35 years old", R.drawable.lillie));
 
     }
 
