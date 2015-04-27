@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
+//java imports
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,6 +28,10 @@ public class Home extends ActionBarActivity {
         //rv.hasFixedSize(true);
         LinearLayoutManager llm = new LinearLayoutManager(context);
         rv.setLayoutManager(llm);
+
+        // Initialize use of the adapter by calling its constructer
+        RVAdapter adapter = new RVAdapter(persons);
+        rv.setAdapter(adapter);
     }
 
     class Person{
@@ -95,7 +99,7 @@ public class Home extends ActionBarActivity {
         }
     }
 
-
+//This is the options menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
