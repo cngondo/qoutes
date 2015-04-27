@@ -1,5 +1,6 @@
 package quotes.example.ngondo.quottaquotes;
 
+
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 //java imports
 import java.util.ArrayList;
 import java.util.List;
@@ -25,15 +27,15 @@ public class Home extends ActionBarActivity {
         setContentView(R.layout.activity_home);
 
         RecyclerView rv = (RecyclerView) findViewById(R.id.rv);
-        //rv.hasFixedSize(true);
-        LinearLayoutManager llm = new LinearLayoutManager(context);
+        LinearLayoutManager llm = new LinearLayoutManager(this);
         rv.setLayoutManager(llm);
+        rv.hasFixedSize();
 
         // Initialize use of the adapter by calling its constructer
         RVAdapter adapter = new RVAdapter(persons);
         rv.setAdapter(adapter);
     }
-
+//Hardcoded data
     class Person{
         String name,age;
         int photoId;
@@ -46,15 +48,17 @@ public class Home extends ActionBarActivity {
     private List<Person> persons;
 
     private void initializeData(){
-        persons=new ArrayList<>();
+        persons = new ArrayList<>();
         persons.add(new Person("Emma Wilson", "23 years old", R.drawable.emma));
         persons.add(new Person("Lavery Maiss", "25 years old", R.drawable.lavery));
         persons.add(new Person("Lillie Watts", "35 years old", R.drawable.lillie));
+
     }
+
     //Adapter that handles the Recycler view
     public class RVAdapter extends RecyclerView.Adapter<RVAdapter.PersonViewHolder>{
 
-        public static class PersonViewHolder extends RecyclerView.ViewHolder {
+        public class PersonViewHolder extends RecyclerView.ViewHolder {
             CardView cv;
             TextView personName;
             TextView personAge;
@@ -81,7 +85,7 @@ public class Home extends ActionBarActivity {
 
         @Override
         public PersonViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-            View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item, viewGroup, false);
+            View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.activity_home, viewGroup, false);
             PersonViewHolder pvh = new PersonViewHolder(v);
             return pvh;
         }
